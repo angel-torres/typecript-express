@@ -4,7 +4,7 @@ import mongoose = require('mongoose');
 import { Request, Response } from 'express';
 
 // ROUTES
-import Users from './routes/users';
+import Users from './routes/usersRoute';
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,

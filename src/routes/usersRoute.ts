@@ -1,11 +1,11 @@
 const express = require('express');
 const UsersRoute = express.Router();
-// const Journal = require('../models/Journal');
+const Users = require('../models/usersModel');
 import { Request, Response } from 'express';
 
 UsersRoute.get('/', async (req: Request, res: Response) => {
     try {
-        const posts = await Journal.find();
+        const posts = await Users.find();
         res.send(posts)
         
     } catch (err) {
@@ -15,7 +15,7 @@ UsersRoute.get('/', async (req: Request, res: Response) => {
 
 UsersRoute.get('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Journal.findById(req.params.entryId)
+        const post = await Users.findById(req.params.entryId)
         res.send(post)
     } catch (err) {
        res.send({error: err})
@@ -24,7 +24,7 @@ UsersRoute.get('/:entryId', async (req: Request, res: Response) => {
 
 UsersRoute.delete('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Journal.findByIdAndDelete(req.params.entryId)
+        const post = await Users.findByIdAndDelete(req.params.entryId)
         res.send(post)
     } catch (err) {
        res.send({error: err})
@@ -33,7 +33,7 @@ UsersRoute.delete('/:entryId', async (req: Request, res: Response) => {
 
 UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Journal.findByIdAndUpdate(req.params.entryId, req.body)
+        const post = await Users.findByIdAndUpdate(req.params.entryId, req.body)
         res.send(post)
     } catch (err) {
        res.send({error: err})
@@ -41,7 +41,7 @@ UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
 })
 
 UsersRoute.post('/', async (req: Request, res: Response) => {
-    const journalEntry = new Journal({
+    const journalEntry = new Users({
         title: req.body.title,
         body: req.body.body
     })
