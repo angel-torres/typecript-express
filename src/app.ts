@@ -1,7 +1,7 @@
 require('dotenv').config();
+const cors = require('cors');
 import express = require('express');
 import mongoose = require('mongoose');
-import cors = require('cors');
 import { Request, Response } from 'express';
 
 // ROUTES
