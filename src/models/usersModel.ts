@@ -1,9 +1,10 @@
 const mongoose = require('mongoose');
 
-const JournalSchema = mongoose.Schema({
-    title: { type: String, required: true },
-    body: { type: String, required: true },
+const UserSchema = mongoose.Schema({
+    name: { type: String, required: true },
+    email: { type: String, required: true },
+    age: { type: Number },
     date: { type: Date, default: Date.now },
   });
 
-module.exports = mongoose.model('Journal', JournalSchema);
+module.exports = mongoose.model('User', UserSchema);

@@ -41,11 +41,12 @@ UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
 })
 
 UsersRoute.post('/', async (req: Request, res: Response) => {
-    const journalEntry = new Users({
-        title: req.body.title,
-        body: req.body.body
-    })
     try {
+        const journalEntry = new Users({
+            name: req.body.name,
+            email: req.body.email,
+            age: req.body.age,
+        })
         const newEntry = await journalEntry.save();
         res.send(newEntry)
     } catch (err) {

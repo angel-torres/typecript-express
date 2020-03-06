@@ -15,10 +15,16 @@ const app = express();
 
 app.use('/users', Users);
 
+app.use(express.json());
+
 app.set("port", process.env.PORT || 3000);
 
 app.get('/', (req: Request, res: Response) => {
-    res.send("<h1>Hello world!</h1>");
+    try {
+        res.send("<h1>Hello world!</h1>");
+    } catch (error) {
+        
+    }
 });
 
 export default app;
