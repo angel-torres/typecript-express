@@ -33,8 +33,9 @@ UsersRoute.delete('/:entryId', async (req: Request, res: Response) => {
 
 UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Users.findByIdAndUpdate(req.params.entryId, req.body)
-        res.send(post)
+        await Users.findByIdAndUpdate(req.params.entryId, req.body)
+        const updatedPost = await Users.findById(req.params.entryId)
+        res.send(updatedPost)
     } catch (err) {
        res.send({error: err})
     }
@@ -42,12 +43,12 @@ UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
 
 UsersRoute.post('/', async (req: Request, res: Response) => {
     try {
-        const journalEntry = new Users({
+        const userEntry = new Users({
             name: req.body.name,
             email: req.body.email,
             age: req.body.age,
         })
-        const newEntry = await journalEntry.save();
+        const newEntry = await userEntry.save();
         res.send(newEntry)
     } catch (err) {
        res.send({error: err})

@@ -13,9 +13,10 @@ mongoose.connect(process.env.DB_CONNECTION, {
 
 const app = express();
 
+app.use(express.json());
+
 app.use('/users', Users);
 
-app.use(express.json());
 
 app.set("port", process.env.PORT || 3000);
 
