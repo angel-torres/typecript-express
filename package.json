@@ -20,7 +20,8 @@
   },
   "homepage": "https://github.com/angel-torres/typescript-express#readme",
   "dependencies": {
-    "express": "^4.17.1"
+    "express": "^4.17.1",
+    "knex": "^0.20.11"
   },
   "devDependencies": {
     "@types/express": "^4.17.3"
