@@ -1,55 +1,55 @@
-const expResponses = require('expResponses');
-const UsersRoute = expResponses.Router();
-const Journal = require('../models/Journal');
+const express = require('express');
+const UsersRoute = express.Router();
+// const Journal = require('../models/Journal');
 import { Request, Response } from 'express';
 
-UsersRoute.get('/', async (Request, Response) => {
+UsersRoute.get('/', async (req: Request, res: Response) => {
     try {
         const posts = await Journal.find();
-        Response.send(posts)
+        res.send(posts)
         
     } catch (err) {
-       Response.send({error: err})
+       res.send({error: err})
     }
 })
 
-UsersRoute.get('/:entryId', async (Request, Response) => {
+UsersRoute.get('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Journal.findById(Request.params.entryId)
-        Response.send(post)
+        const post = await Journal.findById(req.params.entryId)
+        res.send(post)
     } catch (err) {
-       Response.send({error: err})
+       res.send({error: err})
     }
 })
 
-UsersRoute.delete('/:entryId', async (Request, Response) => {
+UsersRoute.delete('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Journal.findByIdAndDelete(Request.params.entryId)
-        Response.send(post)
+        const post = await Journal.findByIdAndDelete(req.params.entryId)
+        res.send(post)
     } catch (err) {
-       Response.send({error: err})
+       res.send({error: err})
     }
 })
 
-UsersRoute.put('/:entryId', async (Request, Response) => {
+UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
     try {
-        const post = await Journal.findByIdAndUpdate(Request.params.entryId, Request.body)
-        Response.send(post)
+        const post = await Journal.findByIdAndUpdate(req.params.entryId, req.body)
+        res.send(post)
     } catch (err) {
-       Response.send({error: err})
+       res.send({error: err})
     }
 })
 
-UsersRoute.post('/', async (Request, Response) => {
+UsersRoute.post('/', async (req: Request, res: Response) => {
     const journalEntry = new Journal({
-        title: Request.body.title,
-        body: Request.body.body
+        title: req.body.title,
+        body: req.body.body
     })
     try {
         const newEntry = await journalEntry.save();
-        Response.send(newEntry)
+        res.send(newEntry)
     } catch (err) {
-       Response.send({error: err})
+       res.send({error: err})
     }
 })
 
