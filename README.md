@@ -7,45 +7,38 @@ TypeScript is a superset of JavaScript. It was created by Microsoft and was firs
 
 ## What are some cool features?
 
-**Static Typing**
-    1. Static typing helps developers catch errors and bugs that can be introduced into our code before it even runs. The compiler gives us errors whenever the variables we define are not given the right type. 
-    2. By defining our types we get much help from our code editor. This means that our editor will give us better intellisense and therefore save us tons of time. If we haven't used a function in a while and are now using it. Our editor will be able to 
-    3. Static typing is one of the most valuable features in TypeScript. It offers several benefits. One of them being that it makes our code self-documenting. Keeping a good documentation of all our functions, the parameters they take, etc. can be difficult. By creating static types we are able to see what type each variable we define is. 
+### Static Typing
+1. Static typing helps developers catch errors and bugs that can be introduced into our code before it even runs. The compiler gives us errors whenever the variables we define are not given the right type. 
+2. By defining our types we get much help from our code editor. This means that our editor will give us better intellisense and therefore save us tons of time. If we haven't used a function in a while and are now using it. Our editor will be able to 
+3. Static typing is one of the most valuable features in TypeScript. It offers several benefits. One of them being that it makes our code self-documenting. Keeping a good documentation of all our functions, the parameters they take, etc. can be difficult. By creating static types we are able to see what type each variable we define is. 
 
-*BOOLEAN*
-
+**BOOLEAN**
 `const isDone: boolean = true`
 
-*NUMBER*
-
+**NUMBER**
 `const year: number = 2020`
 
-*STRING*
-
+**STRING**
 `const name: string = "Robert"`
 
-*ARRAY*
-
+**ARRAY**
 `const list: number[] = [1,2,3]`
 `const list: Array<number> = [1,2,3]`
 
-*TUPLE*
-
+**TUPLE**
 `const tuple: [string, number] = ["Jason", 43]`
 
-*ANY*
-
+**ANY**
 `const doNotKnow: any = "this could be a string or a number" || 23`
 
-*VOID*
-
+**VOID**
 ```
 function warnUser(): void {
 console.log("This is my warning message");
 }
 ```
 
-**Interfaces**
+### Interfaces
 Interfaces focus on the shape that values have. We can define interfaces to define these shapes and create consistancy across our code. 
 
 ```
@@ -55,11 +48,11 @@ interface UserInterface {
 }
 ```
 
-**Optional Chaining**
+### Optional Chaining
 
 This is a cool feature I found out about which helps cleans up the code. It es very useful whenever you have nested data. Sometimes it turns out that one of the objects in the chain is undefined. This can cause errors but with the `.?` we can catch those errors before runtime instead of using the `&&` operator.
 
-*BEFORE*
+**BEFORE**
 ```
 if (data && data.customer && data.customer.address) {
    const {address} = data.customer
@@ -67,13 +60,14 @@ if (data && data.customer && data.customer.address) {
 }
 ```
 
-*AFTER* 
+**AFTER**
 ```
 const address = data?.customer?.address
 const fullAddress = `${address?.street}, ${address?.city}, ${address?.state } ${address?.zipcode}`
 ```
 
 ## Why use TypeScript?
+TypeScript is a great toool to use to decrease bugs slipping into our code. It also helps make our code more maintainable making it self-documenting. If those aren't enough reasons to use it then you should also consider the intellisense that you get while useing. Just that alone can make developers much more productive and efficient. 
 
 ## Getting Started
 
