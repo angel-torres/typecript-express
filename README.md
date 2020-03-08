@@ -13,17 +13,28 @@ TypeScript is a superset of JavaScript. It was created by Microsoft and was firs
 3. Static typing is one of the most valuable features in TypeScript. It offers several benefits. One of them being that it makes our code self-documenting. Keeping a good documentation of all our functions, the parameters they take, etc. can be difficult. By creating static types we are able to see what type each variable we define is. 
 
 *BOOLEAN*
+
 `const isDone: boolean = true`
+
 *NUMBER*
+
 `const year: number = 2020`
+
 *STRING*
+
 `const name: string = "Robert"`
+
 *ARRAY*
+
 `const list: number[] = [1,2,3]`
 `const list: Array<number> = [1,2,3]`
+
 *TUPLE*
+
 `const tuple: [string, number] = ["Jason", 43]`
+
 *ANY*
+
 `const doNotKnow: any = "this could be a string or a number" || 23`
 
 **Optional Chaining**
