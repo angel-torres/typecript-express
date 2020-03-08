@@ -44,14 +44,15 @@ RecipesRoute.put('/:entryId', async (req: Request, res: Response) => {
 RecipesRoute.post('/', async (req: Request, res: Response) => {
     try {
         const recipeEntry = new Recipes ({
-            name: req.body.title,
+            title: req.body.title,
             description: req.body.description,
-            age: req.body.age,
+            ingredients: req.body.ingredients,
         })
         const newEntry = await recipeEntry.save();
         res.send(newEntry)
     } catch (err) {
-       res.send({error: err})
+        console.log("logging error in post endpoint - ", err);
+        res.send({error: err})
     }
 })
 
