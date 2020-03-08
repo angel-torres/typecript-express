@@ -7,11 +7,11 @@ TypeScript is a superset of JavaScript. It was created by Microsoft and was firs
 
 ## What are some cool features?
 
-** Optional Chaining **
+**Optional Chaining**
 
-* This is a cool feature I found out about which helps cleans up the code. It es very useful whenever you have nested data. Sometimes it turns out that one of the objects in the chain is undefined. This can cause errors but with the `.?` we can catch those errors before runtime instead of using the `&&` operator.  *
+*This is a cool feature I found out about which helps cleans up the code. It es very useful whenever you have nested data. Sometimes it turns out that one of the objects in the chain is undefined. This can cause errors but with the `.?` we can catch those errors before runtime instead of using the `&&` operator.*
 
-* BEFORE *
+*BEFORE*
 ```
 if (data && data.customer && data.customer.address) {
    const {address} = data.customer
@@ -19,7 +19,7 @@ if (data && data.customer && data.customer.address) {
 }
 ```
 
-* AFTER *
+*AFTER* 
 ```
 const address = data?.customer?.address
 const fullAddress = `${address?.street}, ${address?.city}, ${address?.state } ${address?.zipcode}`
