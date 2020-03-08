@@ -5,7 +5,7 @@ import mongoose = require('mongoose');
 import { Request, Response } from 'express';
 
 // ROUTES
-import Users from './routes/usersRoute';
+import recipesRoute from './routes/recipesRoute';
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
@@ -18,13 +18,13 @@ app.use(express.json());
 
 app.use(cors());
 
-app.use('/users', Users);
+app.use('/recipes', recipesRoute);
 
 app.set("port", process.env.PORT || 3000);
 
 app.get('/', (req: Request, res: Response) => {
     try {
-        res.send("<h1>Hello world!</h1>");
+        res.send("<h1>Welcome to Recipes API</h1>");
     } catch (error) {
         
     }
