@@ -8,9 +8,9 @@ TypeScript is a superset of JavaScript. It was created by Microsoft and was firs
 ## What are some cool features?
 
 **Static Typing**
-1. Static typing helps developers catch errors and bugs that can be introduced into our code before it even runs. The compiler gives us errors whenever the variables we define are not given the right type. 
-2. By defining our types we get much help from our code editor. This means that our editor will give us better intellisense and therefore save us tons of time. If we haven't used a function in a while and are now using it. Our editor will be able to 
-3. Static typing is one of the most valuable features in TypeScript. It offers several benefits. One of them being that it makes our code self-documenting. Keeping a good documentation of all our functions, the parameters they take, etc. can be difficult. By creating static types we are able to see what type each variable we define is. 
+    1. Static typing helps developers catch errors and bugs that can be introduced into our code before it even runs. The compiler gives us errors whenever the variables we define are not given the right type. 
+    2. By defining our types we get much help from our code editor. This means that our editor will give us better intellisense and therefore save us tons of time. If we haven't used a function in a while and are now using it. Our editor will be able to 
+    3. Static typing is one of the most valuable features in TypeScript. It offers several benefits. One of them being that it makes our code self-documenting. Keeping a good documentation of all our functions, the parameters they take, etc. can be difficult. By creating static types we are able to see what type each variable we define is. 
 
 *BOOLEAN*
 
@@ -36,6 +36,24 @@ TypeScript is a superset of JavaScript. It was created by Microsoft and was firs
 *ANY*
 
 `const doNotKnow: any = "this could be a string or a number" || 23`
+
+*VOID*
+
+```
+function warnUser(): void {
+console.log("This is my warning message");
+}
+```
+
+**Interfaces**
+Interfaces focus on the shape that values have. We can define interfaces to define these shapes and create consistancy across our code. 
+
+```
+interface UserInterface {
+    name: "William";
+    age?: 25;  // we can definte optional values
+}
+```
 
 **Optional Chaining**
 
