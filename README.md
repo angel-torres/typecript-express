@@ -22,14 +22,16 @@ TypeScript is a superset of JavaScript. It was created by Microsoft and was firs
 `const name: string = "Robert"`
 
 **ARRAY**
-`const list: number[] = [1,2,3]`
-`const list: Array<number> = [1,2,3]`
+```
+const list: number[] = [1,2,3]
+const list: Array<number> = [1,2,3]
+```
 
 **TUPLE**
-`const tuple: [string, number] = ["Jason", 43]`
+```const tuple: [string, number] = ["Jason", 43]```
 
 **ANY**
-`const doNotKnow: any = "this could be a string or a number" || 23`
+```const doNotKnow: any = "this could be a string or a number" || 23```
 
 **VOID**
 ```
