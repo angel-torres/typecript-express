@@ -5,6 +5,9 @@ I've created this repo to learn to use TypeScript with ExpressJS.
 
 TypeScript is a superset of JavaScript. It was created by Microsoft and was first relased in 2012. TypeScript provides optional static typing along with other features. It caught my attention a few months ago when I was learning a bit about AngularJS, which uses TypeScript. It has been increasing in popularity and it does not seem like it will be disappearing anytime soon. This project implements many of it's core features.
 
+## Why use TypeScript?
+TypeScript is a great toool to use to decrease bugs slipping into our code. It also helps make our code more maintainable making it self-documenting. If those aren't enough reasons to use it then you should also consider the intellisense that you get while useing. Just that alone can make developers much more productive and efficient. 
+
 ## What are some cool features?
 
 ### Static Typing
@@ -78,8 +81,6 @@ const address = data?.customer?.address
 const fullAddress = `${address?.street}, ${address?.city}, ${address?.state } ${address?.zipcode}`
 ```
 
-## Why use TypeScript?
-TypeScript is a great toool to use to decrease bugs slipping into our code. It also helps make our code more maintainable making it self-documenting. If those aren't enough reasons to use it then you should also consider the intellisense that you get while useing. Just that alone can make developers much more productive and efficient. 
 
 ## Getting Started
 
