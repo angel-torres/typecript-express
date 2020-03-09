@@ -1,6 +1,6 @@
 const express = require('express');
 const RecipesRoute = express.Router();
-const Recipes = require('../models/usersModel');
+const Recipes = require('../models/recipesModel');
 import { Request, Response } from 'express';
 
 RecipesRoute .get('/', async (req: Request, res: Response) => {
@@ -51,7 +51,7 @@ RecipesRoute.post('/', async (req: Request, res: Response) => {
         const newEntry = await recipeEntry.save();
         res.send(newEntry)
     } catch (err) {
-        console.log("logging error in post endpoint - ", err);
+        // console.log("logging error in post endpoint - ", err);
         res.send({error: err})
     }
 })
