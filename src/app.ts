@@ -12,15 +12,19 @@ mongoose.connect(process.env.DB_CONNECTION, {
     useUnifiedTopology: true
 })
 
+// INTIALIZING EXPRESS APP
 const app = express();
+const port: number =  parseInt(process.env.PORT) || 3000;
+app.set("port", process.env.PORT || 3000);
 
+// MIDDLEWARE
 app.use(express.json());
-
 app.use(cors());
 
+
+// ROUTES
 app.use('/recipes', recipesRoute);
 
-app.set("port", process.env.PORT || 3000);
 
 app.get('/', (req: Request, res: Response) => {
     try {
