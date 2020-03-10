@@ -6,6 +6,7 @@ import { Request, Response } from 'express';
 
 // ROUTES
 import recipesRoute from './routes/recipesRoute';
+import usersRoute from './routes/usersRoute';
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
@@ -24,6 +25,7 @@ app.use(cors());
 
 // ROUTES
 app.use('/recipes', recipesRoute);
+app.use('/users', usersRoute);
 
 
 app.get('/', (req: Request, res: Response) => {
