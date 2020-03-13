@@ -1,6 +1,6 @@
 const express = require('express');
 const UsersRoute = express.Router();
-const { User } = require('../models/Schemas');
+const { User, Recipe } = require('../models/Schemas');
 import { Request, Response } from 'express';
 
 // TYPES
@@ -15,7 +15,17 @@ UsersRoute.get('/', async (req: Request, res: Response) => {
     }
 })
 
-UsersRoute.get('/:entryId', async (req: Request, res: Response) => {
+UsersRoute.get('/:userId/recipes', async (req: Request, res: Response) => {
+    try {
+        const user = await User.findById(req.params.entryId);
+        const recipes = await Recipe.find({username: `/${user.username}/i`});
+        res.send(recipes)
+    } catch (err) {
+       res.send({error: err})
+    }
+})
+
+UsersRoute.get('/:userId', async (req: Request, res: Response) => {
     try {
         const user = await User.findById(req.params.entryId)
         res.send(user)
@@ -24,7 +34,7 @@ UsersRoute.get('/:entryId', async (req: Request, res: Response) => {
     }
 })
 
-UsersRoute.delete('/:entryId', async (req: Request, res: Response) => {
+UsersRoute.delete('/:userId', async (req: Request, res: Response) => {
     try {
         const user = await User.findByIdAndDelete(req.params.entryId)
         res.send(user)
@@ -33,7 +43,7 @@ UsersRoute.delete('/:entryId', async (req: Request, res: Response) => {
     }
 })
 
-UsersRoute.put('/:entryId', async (req: Request, res: Response) => {
+UsersRoute.put('/:userId', async (req: Request, res: Response) => {
     try {
         await User.findByIdAndUpdate(req.params.entryId, req.body)
         const updatedUser = await User.findById(req.params.entryId)
