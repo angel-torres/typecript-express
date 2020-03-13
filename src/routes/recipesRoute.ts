@@ -50,8 +50,10 @@ RecipesRoute.post('/', async (req: Request, res: Response) => {
 
         const newRecipe: RecipeInterface = {
             title: req.body.title,
+            username: req.body.username,
             description: req.body.description,
             ingredients: req.body.ingredients,
+            steps: req.body.steps,
         }
 
         const recipeEntry = new Recipe (newRecipe);

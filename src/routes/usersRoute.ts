@@ -15,10 +15,10 @@ UsersRoute.get('/', async (req: Request, res: Response) => {
     }
 })
 
-UsersRoute.get('/:userId/recipes', async (req: Request, res: Response) => {
+UsersRoute.get('/:username/recipes', async (req: Request, res: Response) => {
+    console.log("logging username")
     try {
-        const user = await User.findById(req.params.entryId);
-        const recipes = await Recipe.find({username: `/${user.username}/i`});
+        const recipes = await Recipe.find({username: req.params.username});
         res.send(recipes)
     } catch (err) {
        res.send({error: err})
