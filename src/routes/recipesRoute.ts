@@ -7,7 +7,7 @@ import { Request, Response } from 'express';
 
 import RecipeInterface from '../interfaces/recipeInterface';
 
-RecipesRoute .get('/', async (req: Request, res: Response) => {
+RecipesRoute.get('/', async (req: Request, res: Response) => {
     try {
         const recipes = await Recipe.find();
         res.send(recipes)
@@ -28,6 +28,7 @@ RecipesRoute.get('/:entryId', async (req: Request, res: Response) => {
 
 RecipesRoute.delete('/:entryId', async (req: Request, res: Response) => {
     try {
+        console.log("deleting recipe")
         const recipe = await Recipe.findByIdAndDelete(req.params.entryId)
         res.send(recipe)
     } catch (err) {
