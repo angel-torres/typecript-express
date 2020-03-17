@@ -57,7 +57,7 @@ RecipesRoute.post('/', async (req: Request, res: Response) => {
             steps: req.body.steps,
         }
 
-        const recipeEntry = new Recipe (newRecipe);
+        const recipeEntry = new Recipe(newRecipe);
         const newEntry = await recipeEntry.save();
         res.status(200).json(newEntry);
     } catch (err) {

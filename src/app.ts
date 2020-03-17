@@ -7,6 +7,7 @@ import { Request, Response } from 'express';
 // ROUTES
 import recipesRoute from './routes/recipesRoute';
 import usersRoute from './routes/usersRoute';
+import authRoute from './routes/auth';
 
 mongoose.connect(process.env.DB_CONNECTION, {
     useNewUrlParser: true,
@@ -26,7 +27,7 @@ app.use(cors());
 // ROUTES
 app.use('/recipes', recipesRoute);
 app.use('/users', usersRoute);
-
+app.use('/auth', authRoute);
 
 app.get('/', (req: Request, res: Response) => {
     try {

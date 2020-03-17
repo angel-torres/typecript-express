@@ -5,7 +5,6 @@ const UserSchema = new Schema({
     username: {type: String}
 });
 
-
 const RecipeSchema = new Schema({
     title: {type: String},
     username: {type: String},
