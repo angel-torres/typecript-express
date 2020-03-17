@@ -12,7 +12,7 @@ UsersRoute.get('/', async (req: Request, res: Response) => {
     } catch (err) {
        res.send({error: err})
     }
-})
+});
 
 UsersRoute.get('/:username/recipes', async (req: Request, res: Response) => {
     try {
@@ -21,7 +21,7 @@ UsersRoute.get('/:username/recipes', async (req: Request, res: Response) => {
     } catch (err) {
        res.send({error: err})
     }
-})
+});
 
 UsersRoute.get('/:userId', async (req: Request, res: Response) => {
     try {
@@ -30,7 +30,7 @@ UsersRoute.get('/:userId', async (req: Request, res: Response) => {
     } catch (err) {
        res.send({error: err})
     }
-})
+});
 
 UsersRoute.delete('/:userId', async (req: Request, res: Response) => {
     try {
@@ -39,16 +39,16 @@ UsersRoute.delete('/:userId', async (req: Request, res: Response) => {
     } catch (err) {
        res.send({error: err})
     }
-})
+});
 
-UsersRoute.put('/:userId', async (req: Request, res: Response) => {
-    try {
-        await User.findByIdAndUpdate(req.params.entryId, req.body)
-        const updatedUser = await User.findById(req.params.entryId)
-        res.send(updatedUser)
-    } catch (err) {
-       res.send({error: err})
-    }
-})
+// UsersRoute.put('/:userId', async (req: Request, res: Response) => {
+//     try {
+//         await User.findByIdAndUpdate(req.params.entryId, req.body)
+//         const updatedUser = await User.findById(req.params.entryId)
+//         res.send(updatedUser)
+//     } catch (err) {
+//        res.send({error: err})
+//     }
+// })
 
 export default UsersRoute;

@@ -1,3 +1,7 @@
+interface IngredientInterface  {
+    name: string;
+}
+
 interface StepsInterface {
     name: string;
 }
