@@ -3,15 +3,10 @@ const RecipesRoute = express.Router();
 const { Recipe } = require('../models/Schemas');
 import { Request, Response } from 'express';
 
-// TYPES
-
-import RecipeInterface from '../interfaces/recipeInterface';
-
 RecipesRoute.get('/', async (req: Request, res: Response) => {
     try {
         const recipes = await Recipe.find();
         res.send(recipes)
-        
     } catch (err) {
        res.send({error: err})
     }
@@ -48,7 +43,6 @@ RecipesRoute.put('/:entryId', async (req: Request, res: Response) => {
 
 RecipesRoute.post('/', async (req: Request, res: Response) => {
     try {
-
         const newRecipe: RecipeInterface = {
             title: req.body.title,
             username: req.body.username,
@@ -56,12 +50,10 @@ RecipesRoute.post('/', async (req: Request, res: Response) => {
             ingredients: req.body.ingredients,
             steps: req.body.steps,
         }
-
         const recipeEntry = new Recipe(newRecipe);
         const newEntry = await recipeEntry.save();
         res.status(200).json(newEntry);
     } catch (err) {
-        // console.log("logging error in post endpoint - ", err);
         res.send({error: err})
     }
 })

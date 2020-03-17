@@ -9,7 +9,6 @@ UsersRoute.get('/', async (req: Request, res: Response) => {
     try {
         const users = await User.find();
         res.send(users)
-        
     } catch (err) {
        res.send({error: err})
     }
@@ -49,22 +48,6 @@ UsersRoute.put('/:userId', async (req: Request, res: Response) => {
         res.send(updatedUser)
     } catch (err) {
        res.send({error: err})
-    }
-})
-
-UsersRoute.post('/', async (req: Request, res: Response) => {
-    try {
-
-        const newUser = {
-            username: req.body.username,
-        }
-
-        const userEntry = new User (newUser);
-        const newEntry = await userEntry.save();
-        res.status(200).json(newEntry);
-    } catch (err) {
-        // console.log("logging error in post endpoint - ", err);
-        res.send({error: err})
     }
 })
 
