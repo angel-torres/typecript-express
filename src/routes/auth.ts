@@ -32,26 +32,22 @@ authRoute.post('/signup', async (req: Request, res: Response) => {
 })
 
 authRoute.post('/login', authValidation, async (req: Request, res: Response) => {
-    if(req.body.username && req.body.password) {
-        const { username, password } = req.body;
-        try {
-            const [ user ] = await User.find({username: username});
-            if (user) {
-                const isPasswordValid = await bcrypt.compare(password, user.password);
-                if(isPasswordValid){
-                    res.status(200).json({message: "You are logged in!"})
-                } else {
-                    res.status(400).json({message: "Invalid password."})
-                }
+    const { username, password } = req.body;
+    try {
+        const [ user ] = await User.find({username: username});
+        if (user) {
+            const isPasswordValid = await bcrypt.compare(password, user.password);
+            if(isPasswordValid){
+                res.status(200).json({message: "You are logged in!"})
             } else {
-                res.status(400).json({message: "User not found."});
+                res.status(400).json({message: "Invalid password."})
             }
-        } catch (err) {
-            console.log("error - ", err);
-            res.send({error: err})
+        } else {
+            res.status(400).json({message: "User not found."});
         }
-    } else {
-        res.status(400).json({message: "Must provide username and password."});
+    } catch (err) {
+        console.log("error - ", err);
+        res.send({error: err})
     }
 });
 
