@@ -36,8 +36,9 @@ authRoute.post('/login', async (req: Request, res: Response) => {
         console.log("username", username);
         console.log("password", password);
         try {
-            const user = await User.find({username: username});
-            if (user.length > 0) {
+            const [ user ] = await User.find({username: username});
+            console.log("user password - ", user.password)
+            if (user) {
                 const isPasswordValid = await bcrypt.compare(password, user.password);
                 console.log("isPasswordValid - ", isPasswordValid)
             } else {
