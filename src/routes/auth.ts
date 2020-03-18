@@ -2,6 +2,7 @@ import express = require("express");
 import bcrypt = require('bcryptjs');
 import { Request, Response } from "express";
 const { User } = require('../models/Schemas');
+import { authValidation } from "../middleware/authValidation";
 
 const authRoute = express.Router();
 
@@ -30,7 +31,7 @@ authRoute.post('/signup', async (req: Request, res: Response) => {
     }
 })
 
-authRoute.post('/login', async (req: Request, res: Response) => {
+authRoute.post('/login', authValidation, async (req: Request, res: Response) => {
     if(req.body.username && req.body.password) {
         const { username, password } = req.body;
         try {
