@@ -2,7 +2,7 @@ interface IngredientInterface  {
     name: string;
 }
 
-interface StepsInterface {
+interface InstructionInterface {
     name: string;
 }
 
@@ -11,5 +11,5 @@ interface RecipeInterface {
     username: string;
     description: string;
     ingredients: IngredientInterface[];
-    steps: StepsInterface[];
+    instructions: InstructionInterface[];
 }
