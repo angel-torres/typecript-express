@@ -3,41 +3,39 @@ const UsersRoute = express.Router();
 const { User, Recipe } = require('../models/Schemas');
 import { Request, Response } from 'express';
 
-// TYPES
-
-UsersRoute.get('/', async (req: Request, res: Response) => {
+UsersRoute.get('/', async (request: Request, response: Response) => {
     try {
         const users = await User.find();
-        res.send(users)
-    } catch (err) {
-       res.send({error: err})
+        response.send(users)
+    } catch (error) {
+       response.send({error})
     }
 });
 
-UsersRoute.get('/:username/recipes', async (req: Request, res: Response) => {
+UsersRoute.get('/:username/recipes', async (request: Request, response: Response) => {
     try {
-        const recipes = await Recipe.find({username: req.params.username});
-        res.send(recipes)
-    } catch (err) {
-       res.send({error: err})
+        const recipes = await Recipe.find({username: request.params.username});
+        response.send(recipes)
+    } catch (error) {
+       response.send({error})
     }
 });
 
-UsersRoute.get('/:userId', async (req: Request, res: Response) => {
+UsersRoute.get('/:userId', async (request: Request, response: Response) => {
     try {
-        const user = await User.findById(req.params.entryId)
-        res.send(user)
-    } catch (err) {
-       res.send({error: err})
+        const user = await User.findById(request.params.entryId)
+        response.send(user)
+    } catch (error) {
+       response.send({error})
     }
 });
 
-UsersRoute.delete('/:userId', async (req: Request, res: Response) => {
+UsersRoute.delete('/:userId', async (request: Request, response: Response) => {
     try {
-        const user = await User.findByIdAndDelete(req.params.entryId)
-        res.send(user)
-    } catch (err) {
-       res.send({error: err})
+        const user = await User.findByIdAndDelete(request.params.entryId)
+        response.send(user)
+    } catch (error) {
+       response.send({error})
     }
 });
 
