@@ -1,9 +1,8 @@
 import { Request, Response } from "express";
-export function authValidation(req: Request, res: Response, next: Function) {
-    if(req.body.username && req.body.password) {
-        console.log(req.body);
+export function authValidation(request: Request, response: Response, next: Function) {
+    if(request.body.username && request.body.password) {
         next();
     } else {
-        res.status(400).json({message: "Must provide username and password."});
+        response.status(400).json({message: "Must provide username and password."});
     }
 };
