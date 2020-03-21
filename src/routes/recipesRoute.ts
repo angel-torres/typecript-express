@@ -3,58 +3,57 @@ const RecipesRoute = express.Router();
 const { Recipe } = require('../models/Schemas');
 import { Request, Response } from 'express';
 
-RecipesRoute.get('/', async (req: Request, res: Response) => {
+RecipesRoute.get('/', async (request: Request, response: Response) => {
     try {
         const recipes = await Recipe.find();
-        res.send(recipes)
+        response.send(recipes)
     } catch (err) {
-       res.send({error: err})
+       response.send({error: err})
     }
 })
 
-RecipesRoute.get('/:entryId', async (req: Request, res: Response) => {
+RecipesRoute.get('/:entryId', async (request: Request, response: Response) => {
     try {
-        const recipe = await Recipe.findById(req.params.entryId)
-        res.send(recipe)
+        const recipe = await Recipe.findById(request.params.entryId)
+        response.send(recipe)
     } catch (err) {
-       res.send({error: err})
+       response.send({error: err})
     }
 })
 
-RecipesRoute.delete('/:entryId', async (req: Request, res: Response) => {
+RecipesRoute.delete('/:entryId', async (request: Request, response: Response) => {
     try {
-        console.log("deleting recipe")
-        const recipe = await Recipe.findByIdAndDelete(req.params.entryId)
-        res.send(recipe)
+        const recipe = await Recipe.findByIdAndDelete(request.params.entryId)
+        response.send(recipe)
     } catch (err) {
-       res.send({error: err})
+       response.send({error: err})
     }
 })
 
-RecipesRoute.put('/:entryId', async (req: Request, res: Response) => {
+RecipesRoute.put('/:entryId', async (request: Request, response: Response) => {
     try {
-        await Recipe.findByIdAndUpdate(req.params.entryId, req.body)
-        const updatedPost = await Recipe.findById(req.params.entryId)
-        res.send(updatedPost)
+        await Recipe.findByIdAndUpdate(request.params.entryId, request.body)
+        const updatedPost = await Recipe.findById(request.params.entryId)
+        response.send(updatedPost)
     } catch (err) {
-       res.send({error: err})
+       response.send({error: err})
     }
 })
 
-RecipesRoute.post('/', async (req: Request, res: Response) => {
+RecipesRoute.post('/', async (request: Request, response: Response) => {
     try {
         const newRecipe: RecipeInterface = {
-            title: req.body.title,
-            username: req.body.username,
-            description: req.body.description,
-            ingredients: req.body.ingredients,
-            instructions: req.body.instructions,
+            title: request.body.title,
+            username: request.body.username,
+            description: request.body.description,
+            ingredients: request.body.ingredients,
+            instructions: request.body.instructions,
         }
         const recipeEntry = new Recipe(newRecipe);
         const newEntry = await recipeEntry.save();
-        res.status(200).json(newEntry);
+        response.status(200).json(newEntry);
     } catch (err) {
-        res.send({error: err})
+        response.send({error: err})
     }
 })
 

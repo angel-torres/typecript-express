@@ -3,7 +3,7 @@ interface IngredientInterface  {
 }
 
 interface InstructionInterface {
-    name: string;
+    description: string;
 }
 
 interface RecipeInterface {
