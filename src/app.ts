@@ -1,5 +1,6 @@
 require('dotenv').config();
 const cors = require('cors');
+const helmet = require('helmet');
 import express = require('express');
 import mongoose = require('mongoose');
 import { Request, Response } from 'express';
@@ -22,6 +23,7 @@ app.set("port", process.env.PORT || 3000);
 // MIDDLEWARE
 app.use(express.json());
 app.use(cors());
+app.use(helmet());
 
 // ROUTES
 app.use('/recipes', recipesRoute);

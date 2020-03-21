@@ -1,7 +1,7 @@
 import express = require("express");
 import bcrypt = require('bcryptjs');
 import { Request, Response } from "express";
-const { User } = require('../models/Schemas');
+const { User } = require('../models/models');
 import { authValidation } from "../middleware/authValidation";
 
 const authRoute = express.Router();

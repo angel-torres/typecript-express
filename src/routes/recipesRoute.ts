@@ -1,6 +1,6 @@
 const express = require('express');
 const RecipesRoute = express.Router();
-const { Recipe } = require('../models/Schemas');
+const { Recipe } = require('../models/models');
 import { Request, Response } from 'express';
 
 RecipesRoute.get('/', async (request: Request, response: Response) => {
