@@ -7,8 +7,8 @@ RecipesRoute.get('/', async (request: Request, response: Response) => {
     try {
         const recipes = await Recipe.find();
         response.send(recipes)
-    } catch (err) {
-       response.send({error: err})
+    } catch (error) {
+       response.send({error})
     }
 })
 
@@ -16,8 +16,8 @@ RecipesRoute.get('/:entryId', async (request: Request, response: Response) => {
     try {
         const recipe = await Recipe.findById(request.params.entryId)
         response.send(recipe)
-    } catch (err) {
-       response.send({error: err})
+    } catch (error) {
+       response.send({error})
     }
 })
 
@@ -25,8 +25,8 @@ RecipesRoute.delete('/:entryId', async (request: Request, response: Response) =>
     try {
         const recipe = await Recipe.findByIdAndDelete(request.params.entryId)
         response.send(recipe)
-    } catch (err) {
-       response.send({error: err})
+    } catch (error) {
+       response.send({error})
     }
 })
 
@@ -35,8 +35,8 @@ RecipesRoute.put('/:entryId', async (request: Request, response: Response) => {
         await Recipe.findByIdAndUpdate(request.params.entryId, request.body)
         const updatedPost = await Recipe.findById(request.params.entryId)
         response.send(updatedPost)
-    } catch (err) {
-       response.send({error: err})
+    } catch (error) {
+       response.send({error})
     }
 })
 
@@ -52,8 +52,8 @@ RecipesRoute.post('/', async (request: Request, response: Response) => {
         const recipeEntry = new Recipe(newRecipe);
         const newEntry = await recipeEntry.save();
         response.status(200).json(newEntry);
-    } catch (err) {
-        response.send({error: err})
+    } catch (error) {
+        response.send({error})
     }
 })
 
