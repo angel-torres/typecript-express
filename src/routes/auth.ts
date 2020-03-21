@@ -3,6 +3,7 @@ import bcrypt = require('bcryptjs');
 import { Request, Response } from "express";
 const { User } = require('../models/models');
 import { authValidation } from "../middleware/authValidation";
+import { generateToken } from "../middleware/tokenGenerator";
 
 const authRoute = express.Router();
 
@@ -18,9 +19,10 @@ authRoute.post('/signup',authValidation, async (request: Request, response: Resp
                 username: request.body.username,
                 password: hash,
             }
-            const userEntry = new User (newUser);
-            const newEntry = await userEntry.save();
-            response.status(200).json({user: "User created."});
+            const userEntry = new User(newUser);
+            await userEntry.save();
+            const token = generateToken(username, userEntry._id)
+            response.status(200).cookie("token", token).json({message: "User created."}).send()
         }
     } catch (error) {
         response.send({error})
@@ -34,7 +36,8 @@ authRoute.post('/login', authValidation, async (request: Request, response: Resp
         if (user) {
             const isPasswordValid = await bcrypt.compare(password, user.password);
             if(isPasswordValid){
-                response.status(200).json({message: "You are logged in!"})
+                const token = generateToken(username, user._id)
+                response.status(200).cookie("token", token).send()
             } else {
                 response.status(400).json({message: "Invalid password."})
             }
@@ -42,6 +45,7 @@ authRoute.post('/login', authValidation, async (request: Request, response: Resp
             response.status(400).json({message: "User not found."});
         }
     } catch (error) {
+        console.error(error);
         response.send({error})
     }
 });

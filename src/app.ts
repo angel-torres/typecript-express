@@ -3,6 +3,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 import express = require('express');
 import mongoose = require('mongoose');
+import cookeParser = require('cookie-parser');
 import { Request, Response } from 'express';
 
 // ROUTES
@@ -22,6 +23,7 @@ app.set("port", process.env.PORT || 3000);
 
 // MIDDLEWARE
 app.use(express.json());
+app.use(cookeParser());
 app.use(cors());
 app.use(helmet());
 
