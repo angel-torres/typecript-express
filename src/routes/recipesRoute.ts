@@ -46,6 +46,7 @@ RecipesRoute.post('/', async (request: Request, response: Response) => {
             title: request.body.title,
             username: request.body.username,
             description: request.body.description,
+            thumbnailURL: request.body.thumbnailURL,
             ingredients: request.body.ingredients,
             instructions: request.body.instructions,
         }

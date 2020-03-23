@@ -10,6 +10,7 @@ const RecipeSchema = new Schema({
     title: {type: String},
     username: {type: String},
     description: {type: String},
+    thumbnailURL: {type: String},
     ingredients: {type: Array},
     instructions: {type: Array},
     date: {type: Date, defaultTo: Date()},
