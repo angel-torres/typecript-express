@@ -22,9 +22,9 @@ const port: number =  parseInt(process.env.PORT) || 3000;
 app.set("port", process.env.PORT || 3000);
 
 // MIDDLEWARE
+app.use(cors());
 app.use(express.json());
 app.use(cookeParser());
-app.use(cors());
 app.use(helmet());
 
 // ROUTES
